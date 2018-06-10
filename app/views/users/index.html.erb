@@ -1,0 +1,23 @@
+<h1>Users#index</h1>
+<% if @users.present? %>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Image</th>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= image_tag rails_representation_url user.avatar.variant(resize: '100x100') %></td>
+            <!-- <td><%= image_tag user.avatar %></td> -->
+
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No users found.</p>
+  <%= link_to("Add User", new_user_path) %>
+<% end %>
+
